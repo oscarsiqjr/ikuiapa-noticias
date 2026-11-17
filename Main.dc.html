@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Ikuiapá Notícias — Página inicial</title>
+<meta name="description" content="Jornal descontraído e divertido pra cuiabano se informar: notícias de Cuiabá, Várzea Grande e Baixada Cuiabana com a cara e o jeito da nossa identidade local.">
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #000000; color: #000000; }
+  a { color: inherit; text-decoration: none; }
+  .block-row a:hover { opacity: 0.85; }
+  .display { font-family: 'Archivo Black', 'Arial Black', sans-serif; }
+  .strip-label { writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Inter', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; }
+  .credit { font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+  #article-overlay { position: fixed; inset: 0; z-index: 999; display: none; overflow-y: auto; background: #000000; }
+  #article-overlay.is-open { display: block; }
+  .ao-topbar { position: sticky; top: 0; z-index: 2; background: #000000; border-bottom: 2px solid #000000; }
+  .ao-topbar-inner { max-width: 1080px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .ao-close { border: 2px solid #FFFFFF; background: #000000; color: #FFFFFF; font-family: inherit; padding: 8px 16px; cursor: pointer; font-size: 12px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; }
+  .ao-body { max-width: 760px; margin: 0 auto; padding: 48px 24px 100px; }
+  .ao-source-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 28px; padding: 10px 16px; border: 2px solid #000000; font-size: 12px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+  .ao-share { margin-top: 14px; }
+</style>
+</helmet>
+
+<div style="width: 100%; min-height: 100%; display: flex; flex-direction: column; background: #000000;">
+
+  <!-- Overlay de matéria completa -->
+  <div id="article-overlay">
+    <div class="ao-topbar">
+      <div class="ao-topbar-inner">
+        <div class="display" style="font-size: 20px; color: #FFFFFF;">IKUIAPÁ NOTÍCIAS</div>
+        <button type="button" class="ao-close" id="ao-close-btn" onclick="window.closeArticle();"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"></path></svg>Fechar</button>
+      </div>
+    </div>
+    <div class="ao-body" id="article-overlay-body"></div>
+  </div>
+
+  <!-- Masthead -->
+  <div style="width: 100%; background: #000000; border-bottom: 2px solid #000000;">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 28px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <div class="display" style="font-size: 28px; color: #FFFFFF; letter-spacing: -0.5px;">IKUIAPÁ NOTÍCIAS</div>
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #F0CF1E;">Cuiabá · Várzea Grande · Baixada Cuiabana — 16.11.26</div>
+    </div>
+  </div>
+
+  <!-- Ritual da manhã -->
+  <div style="width: 100%; background: #F0CF1E; border-bottom: 3px solid #000000;">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex: 0 0 auto;"><path d="M4 9h13a1 1 0 011 1v3a5 5 0 01-5 5H9a5 5 0 01-5-5V9z" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"></path><path d="M17 10h2a2 2 0 012 2 3 3 0 01-3 3h-1" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8 3c-.6.8-.6 1.6 0 2.4M11.5 3c-.6.8-.6 1.6 0 2.4" stroke="#000000" stroke-width="1.4" stroke-linecap="round"></path></svg>
+      <span style="font-size: 13px; font-weight: 800; letter-spacing: 0.3px; color:#000000;">RITUAL DA MANHÃ — um café, essas manchetes e já começa o dia com a levada certa.</span>
+    </div>
+  </div>
+
+  <!-- Linhas de notícia em bloco de cor cheia, referência do cartaz de shows -->
+  <div style="width: 100%; display: flex; flex-direction: column;">
+
+    <!-- Item 01 — lavanda -->
+    <a href="#" class="block-row" data-article="1" onclick="event.preventDefault(); window.openArticle('1');" style="display: block; background: #E3BEDD; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M2 17h20M5 17V9l3-3M19 17V9l-3-3M8 6h8M12 6v11" stroke="#000000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div class="strip-label">Mobilidade</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">01 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">LICITAÇÃO<br>DA NOVA PONTE</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">A licitação para a nova ponte sobre o Rio Cuiabá, orçada em R$ 289 milhões, foi aberta pelo governo de Mato Grosso. Com 183 metros de extensão, a estrutura vai ligar Cuiabá a Várzea Grande pela região da Barra do Pari, tornando-se a sétima travessia entre as duas cidades, que já somam seis pontes em operação. O projeto é visto como uma aposta para aliviar o tráfego nos horários de pico das travessias existentes, hoje concentrado nas pontes já construídas entre as duas maiores cidades do estado.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Mobilidade</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Terra Brasil Notícias</div>
+            <div class="credit">Valor &nbsp;→&nbsp; R$ 289 milhões</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 02 — amarelo -->
+    <a href="#" class="block-row" data-article="2" onclick="event.preventDefault(); window.openArticle('2');" style="display: block; background: #F0CF1E; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="14" rx="3" stroke="#000000" stroke-width="1.6"></rect><circle cx="12" cy="6" r="1.2" fill="#000000"></circle><circle cx="12" cy="9" r="1.2" fill="#000000"></circle><circle cx="12" cy="12" r="1.2" fill="#000000"></circle><path d="M12 16v6" stroke="#000000" stroke-width="1.6"></path></svg>
+          </div>
+          <div class="strip-label">Segurança viária</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">02 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">MORTES NO<br>TRÂNSITO -35%</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">Levantamento da Secretaria de Estado de Segurança Pública mostra queda de 35% nas mortes em acidentes de trânsito em Cuiabá e Várzea Grande no primeiro trimestre, na comparação com o mesmo período do ano anterior. O resultado é atribuído a ações de fiscalização e educação no trânsito promovidas pelos órgãos de segurança nas duas cidades, que concentram o maior volume de veículos da Baixada Cuiabana. Mesmo com a melhora, cruzamentos movimentados e trechos de rodovias que cortam a região metropolitana continuam exigindo atenção redobrada de quem dirige.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Segurança viária</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Portal Amazônia</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 03 — verde -->
+    <a href="#" class="block-row" data-article="3" onclick="event.preventDefault(); window.openArticle('3');" style="display: block; background: #4CC08D; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V5l7-3z" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"></path><path d="M9 12l2 2 4-4" stroke="#000000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div class="strip-label">Fiscalização</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">03 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">2 MIL SEM<br>CNH FLAGRADOS</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">Uma operação conjunta entre Detran-MT, Polícia Militar e Guarda Municipal flagrou mais de 2 mil motoristas dirigindo sem Carteira Nacional de Habilitação ou com o licenciamento do veículo vencido em Cuiabá e Várzea Grande, somando 230 ações de fiscalização nas duas cidades. Para os condutores flagrados, a infração pode resultar em multa, retenção do veículo e, em alguns casos, remoção ao pátio — um reforço do alerta das autoridades para quem ainda circula em situação irregular na região metropolitana.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Fiscalização</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Portal do Trânsito</div>
+            <div class="credit">Operações &nbsp;→&nbsp; 230</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 04 — coral -->
+    <a href="#" class="block-row" data-article="4" onclick="event.preventDefault(); window.openArticle('4');" style="display: block; background: #E67A5C; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="17" r="3" stroke="#000000" stroke-width="1.6"></circle><circle cx="18" cy="17" r="3" stroke="#000000" stroke-width="1.6"></circle><path d="M6 17h6l3-7h4M12 17l2-5" stroke="#000000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div class="strip-label">Planejamento</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">04 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">FOCO EM<br>MOTOCICLISTAS</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">A Câmara Temática de Trânsito, que reúne representantes de segurança, perícia e mobilidade urbana, definiu um novo cronograma de fiscalização que passa a priorizar motociclistas em Cuiabá e Várzea Grande a partir de 2026. A categoria concentra boa parte das ocorrências e acidentes registrados nas duas cidades, o que motivou a mudança de foco das operações. A expectativa dos órgãos envolvidos é que a medida ajude a reduzir infrações e sinistros envolvendo motos, hoje um dos maiores desafios de segurança viária da região.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Planejamento</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Garagem360</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 05 — lavanda -->
+    <a href="#" class="block-row" data-article="5" onclick="event.preventDefault(); window.openArticle('5');" style="display: block; background: #E3BEDD; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-7.5 7-12a7 7 0 10-14 0c0 4.5 7 12 7 12z" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="9" r="2.3" stroke="#000000" stroke-width="1.6"></circle></svg>
+          </div>
+          <div class="strip-label">Mobilidade regional</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">05 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">760 FAMÍLIAS<br>NA PESQUISA</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">Uma pesquisa vai ouvir 760 famílias de Cuiabá e Várzea Grande sobre seus hábitos de deslocamento, como parte da elaboração do Plano de Mobilidade Urbana da Região Metropolitana do Vale do Rio Cuiabá. Os dados levantados devem orientar políticas públicas de transporte e infraestrutura viária para as duas cidades, que compartilham boa parte do fluxo diário de veículos e passageiros entre uma margem e outra do rio. O levantamento é visto como um passo importante para embasar prioridades de investimento em mobilidade na região nos próximos anos.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Mobilidade regional</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Portal do Trânsito</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 06 — amarelo -->
+    <a href="#" class="block-row" data-article="6" onclick="event.preventDefault(); window.openArticle('6');" style="display: block; background: #F0CF1E; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#000000" stroke-width="1.6"></rect><path d="M12 7v10M7 12h10" stroke="#000000" stroke-width="1.8" stroke-linecap="round"></path></svg>
+          </div>
+          <div class="strip-label">Saúde</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">06 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">PRONTO-SOCORRO<br>SEM EDITAL</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">O novo Pronto-Socorro de Várzea Grande, orçado em R$ 270 milhões, continua sem data para a publicação do edital de obras prometido pela gestão municipal. A prefeita Flávia Moretti resumiu a diferença entre a estrutura atual e a prevista: "Hoje nosso Pronto-Socorro é somente PS. Ele não é hospital." A unidade deve ampliar bastante a capacidade de atendimento da cidade. Moradores e profissionais de saúde acompanham o andamento do processo, já que o atraso no edital adia também o início das obras.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Saúde · Várzea Grande</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Click Petróleo e Gás</div>
+            <div class="credit">Valor &nbsp;→&nbsp; R$ 270 milhões</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 07 — verde -->
+    <a href="#" class="block-row" data-article="7" onclick="event.preventDefault(); window.openArticle('7');" style="display: block; background: #4CC08D; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21V9M12 9c0-3 2-5 5-5 0 3-2 5-5 5zM12 9c0-3-2-5-5-5 0 3 2 5 5 5z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round"></path><path d="M8 21h8" stroke="#000000" stroke-width="1.6" stroke-linecap="round"></path></svg>
+          </div>
+          <div class="strip-label">Agro</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">07 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">NOVA UNIDADE<br>DA EMBRAPA</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">O ministro da Agricultura, Carlos Fávaro, assinou a ordem de serviço para a nova unidade da Embrapa dedicada à pesquisa e inovação em Mato Grosso, batizada de Umipi. A estrutura deve reforçar a capacidade de pesquisa aplicada ao agronegócio na região, um dos pilares econômicos do estado. A iniciativa é vista como um reforço à posição de Mato Grosso como polo de inovação agrícola, com potencial de gerar tecnologias que beneficiem produtores da Baixada Cuiabana e de outras regiões do estado nos próximos anos.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Agro · Baixada Cuiabana</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Canal Rural</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 08 — coral -->
+    <a href="#" class="block-row" data-article="8" onclick="event.preventDefault(); window.openArticle('8');" style="display: block; background: #E67A5C; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="15" r="5" stroke="#000000" stroke-width="1.6"></circle><path d="M9 12.5v5M6.8 13.6h4.4M6.8 16.4h4.4" stroke="#000000" stroke-width="1.1"></path><path d="M15 4h6v6M21 4l-8 8-4-4-6 6" stroke="#000000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div class="strip-label">Economia</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">08 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">R$13,6 MI<br>DO FPM</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">Cuiabá recebeu R$ 13,6 milhões referentes ao Fundo de Participação dos Municípios no primeiro decêndio de novembro. O repasse é um dos principais componentes da receita municipal e ajuda a compor o caixa da prefeitura para custear serviços e investimentos ao longo do mês. Os valores do FPM variam a cada decêndio, de acordo com a arrecadação federal de tributos, o que faz com que o montante recebido pela capital oscile de um período para outro, exigindo planejamento constante da gestão municipal.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Economia</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Brasil61</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 09 — lavanda -->
+    <a href="#" class="block-row" data-article="9" onclick="event.preventDefault(); window.openArticle('9');" style="display: block; background: #E3BEDD; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 9h16l-1.5 10a2 2 0 01-2 1.8H7.5a2 2 0 01-2-1.8L4 9z" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8 9V7a4 4 0 018 0v2" stroke="#000000" stroke-width="1.6"></path></svg>
+          </div>
+          <div class="strip-label">Custo de vida</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">09 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">CESTA BÁSICA<br>RECUA 1,17%</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">A cesta básica de alimentos em Cuiabá recuou 1,17% na última semana e passou a custar R$ 889,63, segundo levantamento. A queda foi puxada principalmente pela batata, pelo tomate e pelo café, que tiveram recuo de preço no período. Mesmo com a variação para baixo, o valor da cesta continua representando uma parcela expressiva do orçamento das famílias cuiabanas, especialmente as que recebem o salário mínimo, o que mantém o acompanhamento semanal dos preços como referência para o custo de vida na capital.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Economia · Custo de vida</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Correio da Manhã</div>
+            <div class="credit">Preço &nbsp;→&nbsp; R$ 889,63</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 10 — amarelo -->
+    <a href="#" class="block-row" data-article="10" onclick="event.preventDefault(); window.openArticle('10');" style="display: block; background: #F0CF1E; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="18" rx="2" stroke="#000000" stroke-width="1.6"></rect><path d="M8 7h8M8 11h8M8 15h5" stroke="#000000" stroke-width="1.4" stroke-linecap="round"></path></svg>
+          </div>
+          <div class="strip-label">Fiscal</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0 ;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">10 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">PRAZO DO<br>SIMPLES ADIADO</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">A Prefeitura de Cuiabá prorrogou o prazo para que contribuintes regularizem débitos ligados ao Simples Nacional, por meio de decreto municipal. A medida dá um tempo adicional para pequenos e médios negócios colocarem a documentação em dia e evitarem penalidades. A prorrogação segue uma prática recorrente da gestão municipal em períodos de maior dificuldade de regularização, e deve beneficiar sobretudo empresários que ainda não conseguiram reunir a documentação necessária dentro do prazo original estipulado pelo fisco municipal.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Economia · Fiscal</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Coad / Diário Oficial do Município</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Item 11 — verde -->
+    <a href="#" class="block-row" data-article="11" onclick="event.preventDefault(); window.openArticle('11');" style="display: block; background: #4CC08D; border-bottom: 3px solid #000000;">
+      <div style="display: flex; align-items: stretch;">
+        <div style="flex: 0 0 112px; border-right: 2px solid #000000; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px 0;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px solid #000000; display: flex; align-items: center; justify-content: center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="7" y="7" width="10" height="10" rx="1" stroke="#000000" stroke-width="1.6"></rect><path d="M9 7V3M12 7V3M15 7V3M9 21v-4M12 21v-4M15 21v-4M7 9H3M7 12H3M7 15H3M21 9h-4M21 12h-4M21 15h-4" stroke="#000000" stroke-width="1.4" stroke-linecap="round"></path></svg>
+          </div>
+          <div class="strip-label">Tecnologia</div>
+          <div class="strip-label" style="color:#000000;">Leia mais</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M7 7h10v10" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div style="flex: 1; min-width: 0; padding: 22px 24px 0;">
+          <div class="display" style="font-size: 34px; color: #000000; line-height: 1;">11 · 16.11</div>
+          <div class="display" style="font-size: 52px; color: #000000; line-height: 0.98; margin-top: 10px;">INOVA SENAI<br>LEVA IA A CUIABÁ</div>
+          <p style="font-size: 16px; font-weight: 500; color: #000000; line-height: 1.55; margin: 16px 0 0; max-width: 620px;">O Inova SENAI 2026 abriu nesta semana no Centro de Eventos UniSENAI, em Cuiabá, com entrada gratuita e 30 projetos finalistas de inovação. Entre os destaques estão soluções de inteligência artificial: o ELOS, que traduz Libras para o português em tempo real; o TecniCore, plataforma de gestão e manutenção industrial com apoio de IA; e o MIRA, sistema que usa IA para automatizar a fiscalização do uso de equipamentos de proteção individual. O evento ocorreu nos dias 11 e 12 de novembro, com programação aberta ao público mato-grossense.</p>
+          <div style="border-top: 2px solid #000000; margin-top: 20px; padding: 12px 0 14px; display: flex; flex-wrap: wrap; gap: 24px;">
+            <div class="credit">Categoria &nbsp;→&nbsp; Tecnologia · IA</div>
+            <div class="credit">Fonte &nbsp;→&nbsp; Portal da Indústria (SENAI-MT)</div>
+            <button type="button" class="share-btn" onclick="event.preventDefault(); event.stopPropagation(); window.shareWhatsApp(this.closest('a').getAttribute('data-article'));" style="border: 2px solid #000000; background: #FFFFFF; color:#000000; font-family: inherit; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:6px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain;">Compartilhar no WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Frase da semana -->
+  <div style="width: 100%; background: #000000; border-top: 3px solid #000000; padding: 56px 24px;">
+    <div style="max-width: 680px; margin: 0 auto;">
+      <div class="credit" style="color:#F0CF1E; text-align:center; margin-bottom: 20px;">Frase da semana</div>
+      <div style="position: relative; background: #D7FF3F; border-radius: 20px; padding: 36px 32px;">
+        <div aria-hidden="true" style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 36px; height: 36px; border-radius: 50%; background: #000000;"></div>
+        <div aria-hidden="true" style="position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); width: 36px; height: 36px; border-radius: 50%; background: #000000;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;">
+          <span style="font-size: 14px; font-weight: 800; color: #0A0A0A; text-decoration: underline; text-underline-offset: 3px;">@oscarsiqueira</span>
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #0A0A0A; opacity: 0.75;">Frase da semana</span>
+        </div>
+        <p style="margin: 0 0 14px; font-family: 'Archivo Black', 'Arial Black', sans-serif; font-weight: 400; font-size: 38px; line-height: 1.18; color: #0A0A0A;">"Aaaaah xucu merda."</p>
+        <span style="font-size: 14px; font-weight: 700; color: #0A0A0A; opacity: 0.75;">— Autor desconhecido</span>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 26px;">
+          <span style="font-size: 14px; font-weight: 800; color: #0A0A0A;">@oscarsiqueira</span>
+          <div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 6px; background: #0A0A0A; display: flex; align-items: center; justify-content: center;">
+            <span style="color: #D7FF3F; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: -0.5px;">OS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dilema da semana -->
+  <div style="width: 100%; background: #000000; border-top: 3px solid #000000; padding: 56px 24px;">
+    <div style="max-width: 680px; margin: 0 auto;">
+      <div class="credit" style="color:#F0CF1E; text-align:center; margin-bottom: 20px;">Dilema da semana</div>
+      <div id="dilema-card" style="background: #FFFFFF; border: 3px solid #000000; border-radius: 16px; padding: 32px;">
+        <p style="margin: 0 0 24px; font-size: 18px; font-weight: 600; color: #000000; line-height: 1.55;">Você guia um busão desgovernado na Avenida Historiador Rubens de Mendonça. Lá na frente, cinco pessoas esperando no ponto. Dá pra desviar — só que na rua lateral tem o único food truck de pastel da região, sem seguro e sem chance de escapar. O que você faz?</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button type="button" class="dilema-btn" data-opt="pastel" onclick="window.votarDilema('pastel', this);" style="flex:1 1 180px; border:2px solid #000000; background:#FFFFFF; color:#000000; font-family:inherit; padding:14px 16px; cursor:pointer; font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px;">Desvio e perco o pastel</button>
+          <button type="button" class="dilema-btn" data-opt="busao" onclick="window.votarDilema('busao', this);" style="flex:1 1 180px; border:2px solid #000000; background:#FFFFFF; color:#000000; font-family:inherit; padding:14px 16px; cursor:pointer; font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px;">Sigo e arrisco os 5</button>
+        </div>
+        <div id="dilema-resultado" style="display:none; margin-top:20px; font-size:13px; font-weight:600; color:#000000; opacity:0.75; line-height:1.5;"></div>
+        <div style="margin-top:24px; padding-top:20px; border-top:2px solid #000000;">
+          <p style="margin:0; font-size:14px; font-weight:500; color:#000000; line-height:1.6; font-style:italic;">No fim, a pergunta não é o que você faria no volante do busão — é o que você já decide todo dia, sem perceber, sobre o que pesa mais: o número ou o que não tem substituto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div id="newsletter" style="width: 100%; background: #000000; border-top: 3px solid #000000;">
+    <div style="max-width: 640px; margin: 0 auto; padding: 64px 24px; text-align: center;">
+      <div class="display" style="font-size: 30px; color: #FFFFFF; margin-bottom: 14px;">RECEBA O RESUMO<br>DA BAIXADA</div>
+      <p style="margin: 0 0 28px; font-size: 14px; color: #CFCFC8; font-weight: 500;">As principais notícias de Cuiabá, Várzea Grande e região, todas as manhãs, direto no seu e-mail.</p>
+      <form style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+        <label for="newsletter-email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">E-mail para assinatura da newsletter</label>
+        <input id="newsletter-email" type="email" placeholder="seu@email.com" style="flex: 1 1 260px; min-width: 0; padding: 13px 16px; border: 2px solid #FFFFFF; background: #000000; color: #FFFFFF; font-size: 14px;">
+        <button type="submit" style="flex: 0 0 auto; padding: 13px 26px; border: none; background: #F0CF1E; color: #000000; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Assinar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="width: 100%; background: #FFFFFF; margin-top: auto;">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 40px 24px 24px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 28px; padding-bottom: 28px;">
+        <div>
+          <div class="display" style="font-size: 18px; color: #000000; margin-bottom: 10px;">IKUIAPÁ NOTÍCIAS</div>
+          <p style="margin: 0; font-size: 13px; color: #000000; opacity: 0.7; line-height: 1.6;">Ikuiapá Notícias: jornal descontraído e divertido pra cuiabano se informar, com notícias de Cuiabá, Várzea Grande e Baixada Cuiabana e a cara da nossa identidade local.</p>
+        </div>
+        <div>
+          <div class="credit" style="color:#000000; opacity:0.5; margin-bottom: 10px;">Institucional</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700;">
+            <a href="#">Quem somos</a>
+            <a href="#">Anuncie</a>
+          </div>
+        </div>
+        <div>
+          <div class="credit" style="color:#000000; opacity:0.5; margin-bottom: 10px;">Redes sociais</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 700;">
+            <a href="#" style="display:inline-flex; align-items:center; gap:8px;"><img src="./assets/b0ec3dc3a75dc4d42e02dc6fbfcb513a.png" alt="" style="width:18px; height:18px; object-fit:contain;">Instagram</a>
+            <a href="#" style="display:inline-flex; align-items:center; gap:8px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:18px; height:18px; object-fit:contain;">WhatsApp</a>
+            <a href="#" style="display:inline-flex; align-items:center; gap:8px;"><img src="./assets/a14fff75fa8091e38d5146f68f81420d.png" alt="" style="width:18px; height:18px; object-fit:contain;">E-mail</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 2px solid #000000; padding-top: 18px; font-size: 12px; color: #000000; opacity: 0.6;">
+        © 2026 Ikuiapá Notícias — protótipo de portal local, manchetes baseadas em notícias públicas recentes com fonte creditada em cada item.
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  window.shareWhatsApp = function(id) {
+    var art = window.ARTICLES && window.ARTICLES[id];
+    if (!art) return;
+    var headline = art.headline.replace(/<br>/g, ' ');
+    var baseUrl = window.location.origin + window.location.pathname;
+    var link = baseUrl + '#artigo-' + id;
+    var text = '*' + headline + '*\n\n' + art.paragraphs[0] + '\n\nLeia a matéria completa: ' + link;
+    var waUrl = 'https://wa.me/?text=' + encodeURIComponent(text);
+    window.open(waUrl, '_blank');
+  };
+
+  window.ARTICLES = {
+    '1': {
+      category: 'Mobilidade',
+      headline: 'LICITAÇÃO<br>DA NOVA PONTE',
+      color: '#E3BEDD',
+      source: 'Terra Brasil Notícias',
+      sourceUrl: 'https://terrabrasilnoticias.com/2026/05/nova-ponte-de-r-289-milhoes-sobre-rio-cuiaba-tem-licitacao-aberta-no-mato-grosso-e-promete-melhorar-a-mobilidade-da-regiao-com-conexao-de-cidades-estrategicas/',
+      credits: [['Categoria', 'Mobilidade'], ['Fonte', 'Terra Brasil Notícias'], ['Valor', 'R$ 289 milhões']],
+      paragraphs: [
+        'O governo de Mato Grosso abriu a licitação para a nova ponte sobre o Rio Cuiabá, orçada em R$ 289 milhões. Com 183 metros de extensão, a estrutura vai conectar Cuiabá a Várzea Grande pela região da Barra do Pari e se tornará a sétima travessia entre as duas cidades, que hoje somam seis pontes em operação.',
+        'Quem atravessa todo santo dia sabe o motivo da expectativa: nos horários de pico, a fila nas pontes já construídas fica atarracada, carro atrás de carro sem dar vazão. A ideia por trás da nova travessia é justamente destravar esse nó e espalhar o fluxo entre mais pontos de passagem.',
+        'Agora o processo segue o rito normal de uma licitação pública: análise das propostas, habilitação das empresas e, se tudo correr dentro do prazo, assinatura do contrato para o início das obras. Moradores das duas cidades devem acompanhar o andamento, já que o cronograma deve se arrastar por alguns anos até a ponte sair do papel.'
+      ]
+    },
+    '2': {
+      category: 'Segurança viária',
+      headline: 'MORTES NO<br>TRÂNSITO -35%',
+      color: '#F0CF1E',
+      source: 'Portal Amazônia',
+      sourceUrl: 'https://portalamazonia.com/cidades/registros-de-mortes-no-transito-reduzem-35-em-cuiaba-e-varzea-grande/',
+      credits: [['Categoria', 'Segurança viária'], ['Fonte', 'Portal Amazônia']],
+      paragraphs: [
+        'Levantamento da Secretaria de Estado de Segurança Pública mostra queda de 35% nas mortes em acidentes de trânsito em Cuiabá e Várzea Grande no primeiro trimestre, em comparação com o mesmo período do ano anterior. O resultado é atribuído a ações de fiscalização e educação no trânsito promovidas pelos órgãos de segurança nas duas cidades.',
+        'Tchá por Deus, é a primeira vez em anos que o número vem com o sinal certo. E não é pouca coisa: estamos falando das cidades que concentram o maior volume de veículos de toda a Baixada Cuiabana, onde cruzamento perigoso e rodovia movimentada sempre fizeram parte da rotina de quem dirige.',
+        'Mesmo com a melhora, as autoridades reforçam que a atenção não pode cair: trechos de rodovias que cortam a região metropolitana e cruzamentos de maior movimento continuam exigindo cuidado redobrado. A expectativa é manter o ritmo de fiscalização para que a queda se confirme também nos próximos trimestres.'
+      ]
+    },
+    '3': {
+      category: 'Fiscalização',
+      headline: '2 MIL SEM<br>CNH FLAGRADOS',
+      color: '#4CC08D',
+      source: 'Portal do Trânsito',
+      sourceUrl: 'https://www.portaldotransito.com.br/noticias/fiscalizacao-e-legislacao/carteira-de-habilitacao-cnh/mais-de-2-mil-pessoas-foram-flagradas-dirigindo-sem-cnh-ou-licenciamento-em-cuiaba-e-varzea-grande/',
+      credits: [['Categoria', 'Fiscalização'], ['Fonte', 'Portal do Trânsito'], ['Operações', '230']],
+      paragraphs: [
+        'Uma operação conjunta entre Detran-MT, Polícia Militar e Guarda Municipal flagrou mais de 2 mil motoristas dirigindo sem Carteira Nacional de Habilitação ou com o licenciamento do veículo vencido em Cuiabá e Várzea Grande, somando 230 ações de fiscalização nas duas cidades.',
+        'O número impressiona, mas quem acompanha o trânsito das duas cidades no dia a dia não se surpreende tanto: é um trânsito biririco, com gente trocando de faixa sem seta e enfiando o carro ou a moto onde não devia, muitas vezes sem nem ter habilitação pra isso.',
+        'Para os motoristas flagrados, a infração pode resultar em multa, retenção do veículo e, em casos mais graves, remoção ao pátio. A operação deve continuar nos próximos meses, e o alerta das autoridades vale sobretudo para quem ainda circula em situação irregular pela região metropolitana.'
+      ]
+    },
+    '4': {
+      category: 'Planejamento',
+      headline: 'FOCO EM<br>MOTOCICLISTAS',
+      color: '#E67A5C',
+      source: 'Garagem360',
+      sourceUrl: 'https://garagem360.com.br/?p=302330',
+      credits: [['Categoria', 'Planejamento'], ['Fonte', 'Garagem360']],
+      paragraphs: [
+        'A Câmara Temática de Trânsito, que reúne representantes de segurança, perícia e mobilidade urbana, definiu um novo cronograma de fiscalização que passa a priorizar motociclistas em Cuiabá e Várzea Grande a partir de 2026. A categoria concentra boa parte das ocorrências e acidentes registrados nas duas cidades.',
+        'Faz sentido, ah! Quem roda pelas ruas da capital sabe que moto é presença constante em quase toda esquina, entregando comida, levando gente pro trabalho, cortando caminho entre os carros. O volume é grande, e o risco acompanha esse volume.',
+        'A expectativa dos órgãos envolvidos é que o novo foco ajude a reduzir infrações e sinistros envolvendo motos, hoje um dos maiores desafios de segurança viária da região. O cronograma deve começar a valer já nos primeiros meses de 2026.'
+      ]
+    },
+    '5': {
+      category: 'Mobilidade regional',
+      headline: '760 FAMÍLIAS<br>NA PESQUISA',
+      color: '#E3BEDD',
+      source: 'Portal do Trânsito',
+      sourceUrl: 'https://www.portaldotransito.com.br/noticias/pesquisa-para-conhecer-habitos-de-transito-e-definir-politicas-publicas-e-realizada-no-mt/',
+      credits: [['Categoria', 'Mobilidade regional'], ['Fonte', 'Portal do Trânsito']],
+      paragraphs: [
+        'Uma pesquisa vai ouvir 760 famílias de Cuiabá e Várzea Grande sobre seus hábitos de deslocamento, como parte da elaboração do Plano de Mobilidade Urbana da Região Metropolitana do Vale do Rio Cuiabá. Os dados levantados devem orientar políticas públicas de transporte e infraestrutura viária para as duas cidades.',
+        'Se o xomano aparecer na sua porta com uma prancheta perguntando como você vai pro trabalho, não estranha: é esse levantamento rodando pelos bairros das duas cidades, que compartilham boa parte do fluxo diário de veículos e passageiros entre uma margem e outra do rio.',
+        'O levantamento é visto como um passo importante para embasar prioridades de investimento em mobilidade na região nos próximos anos. A ideia é que, com dados mais precisos sobre como as pessoas realmente se deslocam, o planejamento de vias e transporte público fique mais afinado com a realidade das duas cidades.'
+      ]
+    },
+    '6': {
+      category: 'Saúde · Várzea Grande',
+      headline: 'PRONTO-SOCORRO<br>SEM EDITAL',
+      color: '#F0CF1E',
+      source: 'Click Petróleo e Gás',
+      sourceUrl: 'https://clickpetroleoegas.com.br/r-270-milhoes-em-um-so-pronto-socorro-quase-o-que-mato-grosso-reserva-para-dois-hospitais-inteiros-varzea-grande-espera-o-edital-prometido-para-agosto-agora-remarcado-para-btl96-mhbb01/',
+      credits: [['Categoria', 'Saúde · Várzea Grande'], ['Fonte', 'Click Petróleo e Gás'], ['Valor', 'R$ 270 milhões']],
+      paragraphs: [
+        'O novo Pronto-Socorro de Várzea Grande, orçado em R$ 270 milhões, continua sem data para a publicação do edital de obras prometido pela gestão municipal. A prefeita Flávia Moretti resumiu a diferença entre a estrutura atual e a prevista: "Hoje nosso Pronto-Socorro é somente PS. Ele não é hospital."',
+        'E não é força de expressão, não: quem já precisou de atendimento de urgência na unidade atual sabe que o negócio vira um cesso nos dias de maior movimento, com pouca estrutura pra dar conta da demanda de uma cidade do tamanho de Várzea Grande.',
+        'A nova unidade deve ampliar bastante a capacidade de atendimento da cidade, mas o atraso na publicação do edital também adia o início das obras. Moradores e profissionais de saúde seguem de olho no andamento do processo, na esperança de que o cronograma finalmente comece a andar.'
+      ]
+    },
+    '7': {
+      category: 'Agro · Baixada Cuiabana',
+      headline: 'NOVA UNIDADE<br>DA EMBRAPA',
+      color: '#4CC08D',
+      source: 'Canal Rural',
+      sourceUrl: 'https://www.canalrural.com.br/agricultura/agronegocio/favaro-apresenta-nova-estrutura-de-pesquisa-e-inovacao-em-mt/',
+      credits: [['Categoria', 'Agro · Baixada Cuiabana'], ['Fonte', 'Canal Rural']],
+      paragraphs: [
+        'O ministro da Agricultura, Carlos Fávaro, assinou a ordem de serviço para a nova unidade da Embrapa dedicada à pesquisa e inovação em Mato Grosso, batizada de Umipi. A estrutura deve reforçar a capacidade de pesquisa aplicada ao agronegócio na região, um dos pilares econômicos do estado.',
+        'A Embrapa já é tipo arroz-de-festa quando o assunto é agro em Mato Grosso: não tem notícia importante do setor em que o nome da instituição não apareça em algum canto, seja em pesquisa de solo, de semente ou, agora, de inovação tecnológica mesmo.',
+        'A iniciativa é vista como um reforço à posição de Mato Grosso como polo de inovação agrícola, com potencial de gerar tecnologias que beneficiem produtores da Baixada Cuiabana e de outras regiões do estado nos próximos anos.'
+      ]
+    },
+    '8': {
+      category: 'Economia',
+      headline: 'R$13,6 MI<br>DO FPM',
+      color: '#E67A5C',
+      source: 'Brasil61',
+      sourceUrl: 'https://brasil61.com/n/cuiaba-recebe-r-13-6-milhoes-do-fpm-neste-decendio-fpmu260066',
+      credits: [['Categoria', 'Economia'], ['Fonte', 'Brasil61']],
+      paragraphs: [
+        'Cuiabá recebeu R$ 13,6 milhões referentes ao Fundo de Participação dos Municípios no primeiro decêndio de novembro. O repasse é um dos principais componentes da receita municipal e ajuda a compor o caixa da prefeitura para custear serviços e investimentos ao longo do mês.',
+        'Pra quem acompanha as contas da prefeitura, o valor chega quase como um aguacero: cai de uma vez, ajuda a arejar o caixa num período em que as despesas não dão trégua, mas também passa rápido, porque o decêndio seguinte já traz nova conta pra fechar.',
+        'Os valores do FPM variam a cada decêndio, de acordo com a arrecadação federal de tributos, o que faz com que o montante recebido pela capital oscile de um período para outro, exigindo planejamento constante da gestão municipal.'
+      ]
+    },
+    '9': {
+      category: 'Economia · Custo de vida',
+      headline: 'CESTA BÁSICA<br>RECUA 1,17%',
+      color: '#E3BEDD',
+      source: 'Correio da Manhã',
+      sourceUrl: 'https://www.correiodamanha.com.br/nacional/centro-oeste/2026/09/amp/322203-cesta-basica-de-cuiaba-recua-117-e-custa-rs-88963.html',
+      credits: [['Categoria', 'Economia · Custo de vida'], ['Fonte', 'Correio da Manhã'], ['Preço', 'R$ 889,63']],
+      paragraphs: [
+        'A cesta básica de alimentos em Cuiabá recuou 1,17% na última semana e passou a custar R$ 889,63, segundo levantamento. A queda foi puxada principalmente pela batata, pelo tomate e pelo café, que tiveram recuo de preço no período.',
+        'Tchá por Deus, alívio pequeno mas alívio: quem faz a compra do mês sabe que qualquer centavo que sobra no fim da lista já ajuda. Mesmo assim, o valor da cesta continua representando uma parcela expressiva do orçamento das famílias cuiabanas, especialmente das que vivem com salário mínimo.',
+        'O acompanhamento semanal dos preços segue como referência para medir o custo de vida na capital, e a expectativa é que o movimento de queda, ainda que discreto, se mantenha nas próximas semanas.'
+      ]
+    },
+    '10': {
+      category: 'Economia · Fiscal',
+      headline: 'PRAZO DO<br>SIMPLES ADIADO',
+      color: '#F0CF1E',
+      source: 'Coad / Diário Oficial do Município',
+      sourceUrl: 'https://coad.com.br/home/noticias-detalhe/140584/cuiaba-prorroga-prazo-ate-5-de-novembro-para-regularizacao-de-debitos-visando-o-simples-nacional',
+      credits: [['Categoria', 'Economia · Fiscal'], ['Fonte', 'Coad / Diário Oficial do Município']],
+      paragraphs: [
+        'A Prefeitura de Cuiabá prorrogou o prazo para que contribuintes regularizem débitos ligados ao Simples Nacional, por meio de decreto municipal. A medida dá um tempo adicional para pequenos e médios negócios colocarem a documentação em dia e evitarem penalidades.',
+        'Ah, e não é a primeira vez que isso acontece: a prorrogação segue uma prática recorrente da gestão municipal em períodos de maior dificuldade de regularização, dando um fôlego extra pra quem ainda tá correndo atrás da papelada.',
+        'A medida deve beneficiar sobretudo empresários que ainda não conseguiram reunir a documentação necessária dentro do prazo original estipulado pelo fisco municipal. Quem está nessa situação tem agora um novo prazo para colocar a casa em ordem.'
+      ]
+    },
+    '11': {
+      category: 'Tecnologia · IA',
+      headline: 'INOVA SENAI<br>LEVA IA A CUIABÁ',
+      color: '#4CC08D',
+      source: 'Portal da Indústria (SENAI-MT)',
+      sourceUrl: 'https://noticias.portaldaindustria.com.br/noticias/educacao/participe-inova-senai-2026-comeca-com-30-projetos-finalistas/',
+      credits: [['Categoria', 'Tecnologia · IA'], ['Fonte', 'Portal da Indústria (SENAI-MT)']],
+      paragraphs: [
+        'O Inova SENAI 2026 abriu nesta semana no Centro de Eventos UniSENAI, em Cuiabá, com entrada gratuita e 30 projetos finalistas de inovação. Entre os destaques estão soluções de inteligência artificial: o ELOS, que traduz Libras para o português em tempo real; o TecniCore, plataforma de gestão e manutenção industrial com apoio de IA; e o MIRA, sistema que usa IA para automatizar a fiscalização do uso de equipamentos de proteção individual.',
+        'Pros xomanos que acham que inovação é coisa de cidade grande só, o recado é esse: tem gente desenvolvendo tecnologia de ponta aqui mesmo, dentro de Mato Grosso, resolvendo problema real de fábrica, de empresa e de comunicação.',
+        'O evento ocorreu nos dias 11 e 12 de novembro, com programação aberta ao público mato-grossense. A expectativa é que iniciativas como essa sigam colocando Cuiabá no radar de quem acompanha inovação e inteligência artificial no Centro-Oeste.'
+      ]
+    }
+  };
+
+  window.openArticle = function(id) {
+    var art = window.ARTICLES[id];
+    if (!art) return;
+    var body = document.getElementById('article-overlay-body');
+    var creditsHtml = art.credits.map(function(c) {
+      return '<div class="credit">' + c[0] + ' &nbsp;→&nbsp; ' + c[1] + '</div>';
+    }).join('');
+    var paragraphsHtml = art.paragraphs.map(function(p) {
+      return '<p style="font-size: 18px; font-weight: 500; color: #FFFFFF; line-height: 1.65; margin: 0 0 22px;">' + p + '</p>';
+    }).join('');
+    body.innerHTML =
+      '<div class="display" style="display:inline-block; font-size: 13px; color: #000000; background: ' + art.color + '; padding: 6px 12px; margin-bottom: 18px;">' + art.category.toUpperCase() + '</div>' +
+      '<div class="display" style="font-size: 44px; color: #FFFFFF; line-height: 1.02; margin-bottom: 26px;">' + art.headline.replace(/<br>/g, ' ') + '</div>' +
+      paragraphsHtml +
+      '<div style="border-top: 2px solid #FFFFFF; margin-top: 10px; padding-top: 14px; display: flex; flex-wrap: wrap; gap: 24px;">' +
+        creditsHtml.split('</div>').join('</div>').replace(/class="credit"/g, 'class="credit" style="color:#FFFFFF;"') +
+      '</div>' +
+      '<a class="ao-source-link" style="color:#FFFFFF;" href="' + art.sourceUrl + '" target="_blank" rel="noopener">Ver fonte original ↗</a>' +
+      '<div class="ao-share"><button type="button" id="ao-share-btn" style="border: 2px solid #FFFFFF; background: transparent; color:#FFFFFF; font-family: inherit; padding: 8px 16px; cursor: pointer; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; display:inline-flex; align-items:center; gap:8px;"><img src="./assets/06eccc42abea36c28c61ab62fae4f132.png" alt="" style="width:14px; height:14px; object-fit:contain; filter: brightness(0) invert(1);">Compartilhar no WhatsApp</button></div>';
+    document.getElementById('article-overlay').classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    body.scrollTop = 0;
+    history.replaceState(null, '', window.location.pathname + '#artigo-' + id);
+    var shareBtn = document.getElementById('ao-share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.shareWhatsApp(id);
+      });
+    }
+  };
+
+  window.closeArticle = function() {
+    document.getElementById('article-overlay').classList.remove('is-open');
+    document.body.style.overflow = '';
+    history.replaceState(null, '', window.location.pathname);
+  };
+
+  var DILEMA_TEXTOS = {
+    pastel: 'Você escolheu desviar e perder o pastel — preferiu salvar as cinco pessoas. Guarda essa escolha pra reflexão aí embaixo.',
+    busao: 'Você escolheu não desviar — deixou o busão seguir o curso. Guarda essa escolha pra reflexão aí embaixo.'
+  };
+
+  function aplicarVotoDilema(opt, card) {
+    if (!card) return;
+    var buttons = card.querySelectorAll('.dilema-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons[i];
+      b.disabled = true;
+      b.style.cursor = 'default';
+      if (b.getAttribute('data-opt') === opt) {
+        b.style.background = '#F0CF1E';
+        b.style.opacity = '1';
+      } else {
+        b.style.opacity = '0.5';
+      }
+    }
+    var msg = card.querySelector('#dilema-resultado');
+    if (msg) {
+      msg.textContent = DILEMA_TEXTOS[opt] || '';
+      msg.style.display = 'block';
+    }
+  }
+
+  window.votarDilema = function(opt, btnEl) {
+    var card = btnEl.closest('#dilema-card') || document.getElementById('dilema-card');
+    try { localStorage.setItem('ikuiapa_dilema_voto', opt); } catch (e) {}
+    aplicarVotoDilema(opt, card);
+  };
+
+  function restaurarVotoDilema() {
+    var card = document.getElementById('dilema-card');
+    if (!card) return;
+    var voto = null;
+    try { voto = localStorage.getItem('ikuiapa_dilema_voto'); } catch (e) {}
+    if (voto) aplicarVotoDilema(voto, card);
+  }
+
+  function wireStaticElements() {
+    var rows = document.querySelectorAll('.block-row[data-article]');
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      if (row.__waWired) continue;
+      row.__waWired = true;
+      row.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.openArticle(this.getAttribute('data-article'));
+      });
+    }
+    var shareBtns = document.querySelectorAll('.share-btn');
+    for (var j = 0; j < shareBtns.length; j++) {
+      var btn = shareBtns[j];
+      if (btn.__waWired) continue;
+      btn.__waWired = true;
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.shareWhatsApp(this.closest('a').getAttribute('data-article'));
+      });
+    }
+    var closeBtn = document.getElementById('ao-close-btn');
+    if (closeBtn && !closeBtn.__waWired) {
+      closeBtn.__waWired = true;
+      closeBtn.addEventListener('click', function(e) {
+        window.closeArticle();
+      });
+    }
+    var dilemaBtns = document.querySelectorAll('.dilema-btn');
+    for (var k = 0; k < dilemaBtns.length; k++) {
+      var dbtn = dilemaBtns[k];
+      if (dbtn.__waWired) continue;
+      dbtn.__waWired = true;
+      dbtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.votarDilema(this.getAttribute('data-opt'), this);
+      });
+    }
+  }
+
+  function openFromHash() {
+    var m = /^#artigo-(\d+)$/.exec(window.location.hash);
+    if (m && window.ARTICLES && window.ARTICLES[m[1]]) {
+      window.openArticle(m[1]);
+    }
+  }
+
+  wireStaticElements();
+  openFromHash();
+  restaurarVotoDilema();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      wireStaticElements();
+      openFromHash();
+      restaurarVotoDilema();
+    });
+  }
+  setTimeout(wireStaticElements, 300);
+  setTimeout(wireStaticElements, 1000);
+  window.addEventListener('hashchange', openFromHash);
+})();
+</script>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#F0CF1E","options":["#E3BEDD","#F0CF1E","#4CC08D","#E67A5C"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#F0CF1E'
+    };
+  }
+}
+</script>
+</body>
+</html>
