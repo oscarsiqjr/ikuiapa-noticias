@@ -1,29 +1,25 @@
-# Main — design reference
+# Ikuiapá Notícias — site estático
 
-This is a design mockup created in a visual design tool, exported as a
-standalone page. Treat it as a REFERENCE MOCKUP, not production code:
-the markup and inline styles carry the design's precise values — colors,
-font sizes, spacing, radii, shadows, layout — which an implementation
-should replicate faithfully in its own components and styling system
-rather than copy wholesale.
+Export do design (Claude Design) pronto pra servir como site estático,
+por exemplo no GitHub Pages.
 
-## Contents
+## Como publicar no GitHub Pages
 
-- `Main.dc.html` — the artboard (a Design Component: an `<x-dc>`
-  template + a small logic class). The values to replicate live in its
-  inline `style="…"` attributes and the `<helmet><style>` block.
-- `assets/` — files uploaded to the design (images, fonts, media)
-- `support.js`, `vendor/react*.js` — the runtime that renders the
-  component in a browser; not part of the design.
+1. Suba TODO o conteúdo desta pasta pra raiz do repositório (substitua o
+   que já está lá: o `Main-html.zip` solto e os arquivos soltos antigos
+   podem ser removidos).
+2. No GitHub, vá em **Settings → Pages**.
+3. Em "Build and deployment", escolha **Source: Deploy from a branch**,
+   branch **main**, pasta **/ (root)**.
+4. Salve. Em um ou dois minutos o site fica no ar em
+   `https://oscarsiqjr.github.io/ikuiapa-noticias/`.
 
-## Uploaded files
+## Arquivos
 
-Images, fonts and media uploaded to the design are written once each under
-`assets/` — 3 in this export — and the exported files refer to them there. A
-reference a script puts together while the page runs (for example
-`"/_blob/" + id`) is not rewritten and does not load from this folder.
-
-## Viewing
-
-Serve the folder (e.g. `python3 -m http.server`) and open `Main.dc.html`;
-some browsers block the scripts over file://.
+- `index.html` — a página (cópia de `Main.dc.html`, pra servir na raiz).
+- `Main.dc.html` — o artboard original do Claude Design (mantido por
+  referência).
+- `assets/` — os ícones (Instagram, WhatsApp, e-mail).
+- `support.js`, `vendor/` — runtime que renderiza a página.
+- `.nojekyll` — avisa o GitHub Pages pra não processar o site com Jekyll
+  (senão alguns arquivos podem ser ignorados).
